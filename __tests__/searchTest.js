@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 test('Plumbs Search Journey', async () => {
 
-    let browser = await puppeteer.launch();
+    let browser = await puppeteer.launch({args: ['--no-sandbox']});
 
     let page = await browser.newPage();
 

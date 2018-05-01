@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 test('Test test', async () => {
 
-    let browser = await puppeteer.launch();
+    let browser = await puppeteer.launch({args: ['--no-sandbox']});
 
     let page = await browser.newPage();
 
