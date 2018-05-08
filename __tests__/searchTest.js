@@ -8,8 +8,8 @@ describe('Search journey test', async () => {
         let page = await browser.newPage();
 
         await page.setViewport({
-            width: 1440,
-            height: 900
+            width: 1920,
+            height: 1080
         });
 
         await page.goto('https://www.plumbs.co.uk/', { waitUntil: 'domcontentloaded'});
