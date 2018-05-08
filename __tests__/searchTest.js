@@ -3,7 +3,10 @@ const puppeteer = require('puppeteer');
 describe('Search journey test', async () => {
     test('Plumbs Search Journey', async (done) => {
 
-        let browser = await puppeteer.launch({args: ['--no-sandbox'], headless: false});
+        let browser = await puppeteer.launch({
+            args: ['--no-sandbox'],
+            headless: false,
+        });
 
         let page = await browser.newPage();
 
@@ -12,11 +15,13 @@ describe('Search journey test', async () => {
             height: 1080
         });
 
+        await page.bringToFront();
+
         await page.goto('https://www.plumbs.co.uk/', { waitUntil: 'domcontentloaded'});
-        await page.click('#search_toggle', { delay: 250 });
+        await page.click('#search_toggle', { delay: 150 });
 
         const searchInput = await page.$('#search_drop_down');
-        await searchInput.type('covers', { delay: 250 })
+        await searchInput.type('covers', { delay: 150 })
         await searchInput.press('Enter');
 
         await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
@@ -35,10 +40,15 @@ describe('Search journey test', async () => {
             visible: true
         });
 
+        var sideNav = await page.$$('.side_nav')
+        var isSideNavOnPage = sideNav.length !== 0;
+
+        expect(isSideNavOnPage).toBe(true);
+
+        await new Promise((resolve, reject)=>setTimeout(resolve, 500))
+
         browser.close();
 
         done();
     }, 30000)
 })
-
-
