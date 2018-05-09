@@ -45,7 +45,7 @@ describe('Search journey test', async () => {
 
         expect(isSideNavOnPage).toBe(true);
 
-        await new Promise((resolve, reject)=>setTimeout(resolve, 500))
+        await new Promise((resolve, reject) => setTimeout(resolve, 500))
 
         browser.close();
 
