@@ -11,8 +11,8 @@ describe('Search journey test', async () => {
         let page = await browser.newPage();
 
         await page.setViewport({
-            width: 1920,
-            height: 1080
+            width: 1440,
+            height: 900
         });
 
         await page.bringToFront();
